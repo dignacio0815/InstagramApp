@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnLogin;
     private Button btnCreate;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,10 +28,10 @@ public class MainActivity extends AppCompatActivity {
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
             // do stuff with the user
-            Intent userLoggedIn = new Intent(MainActivity.this, HomeActivity.class);
+            Intent userLoggedIn = new Intent(MainActivity.this, ComposeActivity.class);
             startActivity(userLoggedIn);
         }
-        // connecting text view and buttons to main activity
+
         etUsernameInput = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 login(username, password);
             }
         });
+        // set navigation items selected listener
     }
 
     // method to login user
@@ -62,36 +64,19 @@ public class MainActivity extends AppCompatActivity {
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException e) {
-                if(e == null) {
+                if (e == null) {
                     Log.d("LoginActivity", "Login successful");
-                    final Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    final Intent intent = new Intent(MainActivity.this, ComposeActivity.class);
                     startActivity(intent);
                     finish();
-                }
-                else {
+                } else {
                     Log.e("LoginActivity", "Login Failure");
                     e.printStackTrace();
                 }
             }
         });
     }
-
-
-
-
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
-//            if (resultCode == RESULT_OK) {
-//                // by this point we have the camera photo on disk
-//                Bitmap takenImage = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
-//                // RESIZE BITMAP, see section below
-//                // Load the taken image into a preview
-//                ivImage = (ImageView) findViewById(R.id.ivImage);
-//                ivImage.setImageBitmap(takenImage);
-//            } else { // Result was a failure
-//                Toast.makeText(this, "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
-//            }
-//        }
-//    }
 }
+
+
+

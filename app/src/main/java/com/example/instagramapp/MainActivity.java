@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText etUsernameInput;
     private EditText etPassword;
     private Button btnLogin;
+    private Button btnCreate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +28,15 @@ public class MainActivity extends AppCompatActivity {
         etUsernameInput = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
+        btnCreate = findViewById(R.id.btnCreate);
+
+        btnCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, CreateAccount.class);
+                startActivity(i);
+            }
+        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,4 +69,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
+
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
+//            if (resultCode == RESULT_OK) {
+//                // by this point we have the camera photo on disk
+//                Bitmap takenImage = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
+//                // RESIZE BITMAP, see section below
+//                // Load the taken image into a preview
+//                ivImage = (ImageView) findViewById(R.id.ivImage);
+//                ivImage.setImageBitmap(takenImage);
+//            } else { // Result was a failure
+//                Toast.makeText(this, "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
+//            }
+//        }
+//    }
 }

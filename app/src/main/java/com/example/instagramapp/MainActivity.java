@@ -24,6 +24,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+            // do stuff with the user
+            Intent userLoggedIn = new Intent(MainActivity.this, HomeActivity.class);
+            startActivity(userLoggedIn);
+        }
         // connecting text view and buttons to main activity
         etUsernameInput = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);

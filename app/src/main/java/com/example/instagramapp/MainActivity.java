@@ -1,13 +1,16 @@
 package com.example.instagramapp;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.jaeger.library.StatusBarUtil;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -18,11 +21,23 @@ public class MainActivity extends AppCompatActivity {
     private EditText etPassword;
     private Button btnLogin;
     private Button btnCreate;
+    private ConstraintLayout cLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // transparent status bar
+        StatusBarUtil.setTransparent(MainActivity.this);
+
+        cLayout = findViewById(R.id.cLayout);
+        // changing color background that resembles Instagram
+        AnimationDrawable animationDrawable = (AnimationDrawable) cLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(4000);
+        animationDrawable.setExitFadeDuration(2000);
+        // onResume
+        animationDrawable.start();
 
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {

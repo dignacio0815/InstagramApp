@@ -47,4 +47,14 @@ dependencies {
     // Glide v4 uses this new annotation processor -- see https://bumptech.github.io/glide/doc/generatedapi.html
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
 
+    // implementation for SwipingRefreshLayout
+    implementation 'com.android.support:support-v4:28.0.0'
+
+    // transparent status bar
+    compile 'com.jaeger.statusbarutil:library:1.4.0'
+
+    // toolbar dependency
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+
+    implementation 'com.android.support:appcompat-v7:28.0.0'
 }

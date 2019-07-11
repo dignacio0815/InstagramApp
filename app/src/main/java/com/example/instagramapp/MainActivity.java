@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     private Button btnLogin;
     private Button btnCreate;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
                 login(username, password);
             }
         });
-        // set navigation items selected listener
     }
 
     // method to login user
